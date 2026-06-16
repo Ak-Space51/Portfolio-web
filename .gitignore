@@ -1,0 +1,18 @@
+/node_modules
+/.next
+/out
+/build
+next-env.d.ts
+*.tsbuildinfo
+.DS_Store
+.env*
+!.env.example
+
+# Claude Code workspace files
+.claude/
+
+# Source / reference files kept in project root (not part of build)
+CRT.jpg
+cyberpunk-city.1920x1080.mp4
+Desktop\ -\ *.png
+effb5baa-*.png

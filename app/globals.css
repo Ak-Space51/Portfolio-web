@@ -1,0 +1,287 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   FONTS
+   SDDystopianDemo is user-supplied. Drop the file in
+   /public/fonts/  (see public/fonts/README.txt). Falls back
+   to Orbitron until then.
+   ============================================================ */
+@font-face {
+  font-family: "Mechline";
+  src: url("/fonts/Mechline.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================================
+   THEME TOKENS  (space-separated RGB triples for tailwind alpha)
+   ============================================================ */
+:root,
+[data-theme="dark"] {
+  --bg: 8 9 13;
+  --surface: 14 16 23;
+  --panel: 19 21 30;
+  --line: 86 30 38;
+  --line-soft: 44 30 38;
+  /* dark mode keeps text on-theme (no neutral white/grey) — see [data-tone] */
+  --text: 96 230 242;
+  --muted: 228 104 116;
+  --accent: 232 42 58;
+  --accent-active: 38 222 238;
+  --warn: 240 182 44;
+  --ok: 252 248 1;
+  --grid: 255 255 255;
+  --font-dystopian: "Mechline";
+}
+
+[data-theme="light"] {
+  --bg: 240 244 250;
+  --surface: 255 255 255;
+  --panel: 234 240 248;
+  --line: 40 96 184;
+  --line-soft: 196 214 240;
+  --text: 18 27 43;
+  --muted: 88 104 128;
+  --accent: 28 92 204;
+  /* light-mode highlight/selected cue is red (dark mode's is cyan) */
+  --accent-active: 222 42 56;
+  --warn: 196 128 12;
+  --ok: 241 62 68;
+  --grid: 20 40 80;
+}
+
+/* ============================================================
+   PER-SECTION TEXT TONE (dark mode only)
+   A [data-tone] wrapper recolors all themed text (text-text /
+   text-muted) inside it. Interactive colors (--accent /
+   --accent-active) are left alone so hover/selected cues stay.
+   Light mode ignores these (keeps its readable neutrals).
+   ============================================================ */
+[data-theme="dark"] [data-tone="red"] {
+  --text: 245 110 120;
+  --muted: 228 92 104;
+}
+[data-theme="dark"] [data-tone="cyan"] {
+  --text: 120 234 246;
+  --muted: 92 220 238;
+}
+[data-theme="dark"] [data-tone="amber"] {
+  --text: 246 200 92;
+  --muted: 234 180 72;
+}
+
+* {
+  border-color: rgb(var(--line) / 0.5);
+}
+
+/* Light mode: selected mission rows (flip variant) fill with the blue accent,
+   so the red accent-active title/icon is hard to read. Override to a deep,
+   readable blue. Dark mode keeps its cyan-on-red signature. */
+[data-theme="light"] .mission-sel {
+  color: rgb(18 52 130);
+}
+
+/* The journal entry icon (public/assets/icon.svg) ships with baked-in red
+   fills. In light mode we shift its hue to blue so it reads as a cool accent
+   against the now-red highlight colour. */
+[data-theme="light"] .journal-card-icon {
+  filter: hue-rotate(220deg) saturate(1.05);
+}
+
+html {
+  color-scheme: dark;
+}
+[data-theme="light"] {
+  color-scheme: light;
+}
+
+body {
+  background-color: rgb(var(--bg));
+  color: rgb(var(--text));
+  font-family: var(--font-rajdhani), system-ui, sans-serif;
+  /* nudge the base weight up so the slim Rajdhani/mono text reads bolder */
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   CRT PHOSPHOR GLOW (dark mode only)
+   A subtle text-shadow inherited by ALL text gives the
+   "glowing monitor" look. currentColor makes each glow match
+   its own text colour (red / cyan / amber per section). The
+   .text-glow utilities get a stronger, colour-matched glow so
+   headings stay punchy. Light mode is left crisp/readable.
+   ============================================================ */
+[data-theme="dark"] body {
+  text-shadow: 0 0 6px color-mix(in srgb, currentColor 38%, transparent);
+}
+[data-theme="dark"] .text-glow {
+  text-shadow: 0 0 14px color-mix(in srgb, currentColor 60%, transparent);
+}
+[data-theme="dark"] .text-glow-active {
+  text-shadow: 0 0 16px color-mix(in srgb, currentColor 72%, transparent);
+}
+
+/* Subtle ambient background grid + vignette on the whole OS */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgb(var(--grid) / 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--grid) / 0.03) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 85%);
+}
+
+::selection {
+  background: rgb(var(--accent-active) / 0.35);
+  color: rgb(var(--text));
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(var(--surface));
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--accent) / 0.4);
+  border: 1px solid rgb(var(--line));
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--accent-active) / 0.55);
+}
+
+@layer components {
+  /* HUD clip-path shapes (notched / angular corners) */
+  .clip-notch {
+    clip-path: polygon(
+      0 10px, 10px 0, calc(100% - 18px) 0, 100% 18px,
+      100% 100%, 18px 100%, 0 calc(100% - 18px)
+    );
+  }
+  .clip-notch-sm {
+    clip-path: polygon(
+      0 6px, 6px 0, calc(100% - 10px) 0, 100% 10px,
+      100% 100%, 10px 100%, 0 calc(100% - 10px)
+    );
+  }
+  .clip-tab {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  }
+  .clip-btn {
+    clip-path: polygon(
+      8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px
+    );
+  }
+  .clip-chip {
+    clip-path: polygon(0 0, calc(100% - 7px) 0, 100% 7px, 100% 100%, 7px 100%, 0 calc(100% - 7px));
+  }
+
+  /* HUD label */
+  .hud-label {
+    font-family: var(--font-jetbrains), monospace;
+    font-size: 0.625rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgb(var(--muted));
+  }
+
+  .hud-divider {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      rgb(var(--accent) / 0.6),
+      rgb(var(--line) / 0.2) 60%,
+      transparent
+    );
+  }
+
+  .hud-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--accent) / 0.5) transparent;
+  }
+}
+
+@keyframes crt-flicker {
+  0%,
+  100% {
+    opacity: 0.92;
+  }
+  50% {
+    opacity: 1;
+  }
+  52% {
+    opacity: 0.82;
+  }
+  54% {
+    opacity: 0.96;
+  }
+}
+
+@keyframes crt-roll {
+  0% {
+    transform: translateY(-30%);
+  }
+  100% {
+    transform: translateY(130%);
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 14px rgb(var(--accent) / 0.55);
+  }
+  .text-glow-active {
+    text-shadow: 0 0 16px rgb(var(--accent-active) / 0.7);
+  }
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  }
+}
+
+/* Scale the whole OS up on large displays. All rem-based sizing (text,
+   spacing, max-widths) scales together, so the UI fills big monitors instead
+   of looking small / lost in the centre. Common laptop/desktop widths are
+   unchanged (root stays 16px below 1680px). */
+@media (min-width: 1680px) {
+  html {
+    font-size: 17px;
+  }
+}
+@media (min-width: 1920px) {
+  html {
+    font-size: 18.5px;
+  }
+}
+@media (min-width: 2240px) {
+  html {
+    font-size: 20px;
+  }
+}
+@media (min-width: 2560px) {
+  html {
+    font-size: 22px;
+  }
+}
+
+/* Respect reduced motion globally for CSS animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
