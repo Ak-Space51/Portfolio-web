@@ -19,86 +19,193 @@ export const missions: Mission[] = [
     ],
     screenshots: ["DASHBOARD // PROFILE", "MISSION DOSSIER", "TRANSMISSION"],
     liveDemo: "#",
-    sourceCode: "https://github.com",
+    sourceCode: "https://github.com/Ak-Space51/Portfolio-web",
   },
   {
-    id: "MISSION_02",
-    codename: "AI CODE ASSISTANT",
-    type: "DEVELOPER TOOL",
-    status: "DEPLOYED",
-    year: "2025",
-    description:
-      "A context-aware coding copilot that indexes a repository, retrieves relevant code, and proposes verified edits through an agentic loop.",
-    techStack: ["Python", "FastAPI", "PyTorch", "Postgres", "React"],
-    features: [
-      "Repo-wide semantic search",
-      "Agentic edit + verify loop",
-      "Inline diff review",
-      "Streaming responses",
-      "Local-first privacy mode",
+    "id": "MISSION_02",
+    "codename": "DATAFRAME CORE",
+    "type": "ANALYTICS ENGINE",
+    "status": "DEPLOYED",
+    "year": "2026",
+    "description": "A high-performance C++ DataFrame library built on Apache Arrow and Parquet, executing analytical workflows via a DAG-based planner and rule-based query optimizer.",
+    "techStack": ["C++", "Apache Arrow", "Apache Parquet", "CMake"],
+    "features": [
+      "Eager and lazy execution APIs",
+      "DAG-based deferred execution",
+      "Rule-based query optimization",
+      "Predicate & projection pushdown",
+      "Columnar memory backend"
     ],
-    screenshots: ["AGENT CONSOLE", "DIFF REVIEW"],
-    liveDemo: "#",
-    sourceCode: "https://github.com",
+    "screenshots": ["DAG PLANNER // EXECUTION", "OPTIMIZER TRACE", "MEMORY ALLOCATION"],
+    "liveDemo": "#",
+    "sourceCode": "https://github.com/Ak-Space51/cpp-lazy-eager-optimized-dataframe"
   },
   {
-    id: "MISSION_03",
-    codename: "TASKFLOW PRO",
-    type: "SAAS PLATFORM",
-    status: "DEPLOYED",
-    year: "2025",
-    description:
-      "A real-time team operations platform with live boards, presence, and automation rules — engineered for sub-100ms collaborative updates.",
-    techStack: ["Next.js", "tRPC", "Redis", "WebSockets", "Prisma"],
-    features: [
-      "Real-time collaborative boards",
-      "Presence + cursors",
-      "Automation engine",
-      "Role-based access",
-      "Offline sync",
+    "id": "MISSION_03",
+    "codename": "CACHE GRAPH BENCH",
+    "type": "SYSTEMS PROFILER",
+    "status": "COMPLETE",
+    "year": "2026",
+    "description": "A performance-focused graph processing engine benchmarking Breadth-First Search (BFS) over pointer-based adjacency lists against cache-friendly Compressed Sparse Row (CSR) memory layouts.",
+    "techStack": ["C", "Cachegrind", "Valgrind", "Python"],
+    "features": [
+      "CSR memory layout conversion",
+      "Hardware-level cache profiling",
+      "Memory locality optimization",
+      "Sequential memory traversal",
+      "Algorithmic performance benchmarking"
     ],
-    screenshots: ["LIVE BOARD", "AUTOMATION RULES"],
-    liveDemo: "#",
-    sourceCode: "https://github.com",
+    "screenshots": ["MEMORY LAYOUT ANALYSIS", "CACHE MISS DOSSIER"],
+    "liveDemo": "#",
+    "sourceCode": "https://github.com/Ak-Space51/Cache-Graphs"
   },
   {
-    id: "MISSION_04",
-    codename: "DATA VISUALIZER",
-    type: "ANALYTICS ENGINE",
-    status: "COMPLETE",
-    year: "2024",
-    description:
-      "A GPU-accelerated dashboard rendering millions of data points with smooth pan/zoom, built on a custom WebGL charting core.",
-    techStack: ["TypeScript", "WebGL", "Rust (WASM)", "ClickHouse"],
-    features: [
-      "Million-point rendering",
-      "Custom WebGL core",
-      "WASM aggregation",
-      "Time-series drilldown",
-      "Exportable reports",
+    "id": "MISSION_04",
+    "codename": "RISCV OOO SIMULATOR",
+    "type": "HARDWARE EMULATOR",
+    "status": "DEPLOYED",
+    "year": "2026",
+    "description": "A 32-bit out-of-order execution RISC-V processor simulator implementing Tomasulo's algorithm with precise exception handling, a Reorder Buffer, and a 2-bit saturating branch predictor.",
+    "techStack": ["C++", "Makefile", "RISC-V Assembly"],
+    "features": [
+      "Out-of-order execution pipeline",
+      "Reorder Buffer (ROB) integration",
+      "Register Alias Table (RAT)",
+      "Precise exception handling",
+      "2-bit saturating branch prediction"
     ],
-    screenshots: ["RENDER GRID", "TIME-SERIES"],
-    liveDemo: "#",
-    sourceCode: "https://github.com",
+    "screenshots": ["PIPELINE TRACE", "EXECUTION UNITS", "BRANCH PREDICTOR LOG"],
+    "liveDemo": "#",
+    "sourceCode": "https://github.com/Ak-Space51/Riscv-ooo-Simulator"
   },
   {
-    id: "MISSION_05",
-    codename: "SECURE CHAT APP",
-    type: "MOBILE / WEB",
-    status: "COMPLETE",
-    year: "2024",
-    description:
-      "End-to-end encrypted messaging with self-destructing transmissions, forward secrecy, and a zero-knowledge backend.",
-    techStack: ["React Native", "Go", "libsignal", "gRPC"],
-    features: [
-      "End-to-end encryption",
-      "Forward secrecy",
-      "Self-destruct timers",
-      "Zero-knowledge sync",
-      "Cross-platform",
+    "id": "MISSION_05",
+    "codename": "FPGA RACER",
+    "type": "HARDWARE SYNTHESIS",
+    "status": "COMPLETE",
+    "year": "2026",
+    "description": "A real-time car racing game synthesized directly onto FPGA hardware, featuring 60Hz VGA rendering, hardware-level collision logic, and a linear feedback shift register for AI behavior.",
+    "techStack": ["Verilog", "FPGA", "VGA"],
+    "features": [
+      "60Hz VGA pixel-by-pixel rendering",
+      "Hardware-level hitbox collision",
+      "LFSR pseudo-random generation",
+      "ROM-based sprite layering",
+      "Finite State Machine (FSM) core"
     ],
-    screenshots: ["SECURE THREAD", "KEY EXCHANGE"],
-    liveDemo: "#",
-    sourceCode: "https://github.com",
+    "screenshots": ["VGA OUTPUT STREAM", "HARDWARE FSM", "COLLISION MATRIX"],
+    "liveDemo": "#",
+    "sourceCode": "https://github.com/Ak-Space51/FPGA-CAR-RACER"
+  },
+  {
+    "id": "MISSION_06",
+    "codename": "TASKFLOW KANBAN",
+    "type": "SAAS PLATFORM",
+    "status": "DEPLOYING",
+    "year": "2026",
+    "description": "A robust real-time project management backend featuring Kanban boards, dynamic task tracking, JWT-based authentication, and role-based access control.",
+    "techStack": ["Node.js", "Express", "MongoDB", "JWT", "TypeScript", "JavaScript"],
+    "features": [
+      "Real-time REST API endpoints",
+      "Role-based access control (RBAC)",
+      "JWT session management",
+      "Multi-board task syncing",
+      "Mentions and commentary engine"
+    ],
+    "screenshots": ["KANBAN OVERVIEW", "SECURITY PROTOCOL", "TASK DOSSIER"],
+    "liveDemo": "#",
+    "sourceCode": "https://github.com/Ak-Space51/Project-Manager"
+  },
+  {
+    "id": "MISSION_07",
+    "codename": "Z3 SUDOKU DECODER",
+    "type": "ALGORITHMIC SOLVER",
+    "status": "COMPLETE",
+    "year": "2026",
+    "description": "An automated Sudoku puzzle solver that translates grid states into DIMACS CNF formulas and resolves them instantaneously using the Z3 SAT solver.",
+    "techStack": ["OCaml", "Z3"],
+    "features": [
+      "DIMACS CNF constraint translation",
+      "Z3 SAT solver integration",
+      "16x16 grid expansion support",
+      "Automated state decoding"
+    ],
+    "screenshots": ["CNF MATRIX", "Z3 TERMINAL OUTPUT"],
+    "liveDemo": "#",
+    "sourceCode": "https://github.com/Ak-Space51/Z3-Sudoku-Solver"
+  },
+  {
+    "id": "MISSION_08",
+    "codename": "GRAPH-SOCIALNET SIMULATOR",
+    "type": "NETWORK SIMULATOR",
+    "status": "COMPLETE",
+    "year": "2026",
+    "description": "A social network simulator operating on complex graph data structures, mapping user interactions, sorting posts via AVL trees, and calculating shortest-path degrees of separation.",
+    "techStack": ["C++", "Bash"],
+    "features": [
+      "Graph-based relationship mapping",
+      "AVL tree content sorting",
+      "Bidirectional friendship tracking",
+      "Degrees of separation (BFS search)",
+      "Algorithmic friend suggestions"
+    ],
+    "screenshots": ["GRAPH TOPOLOGY", "AVL DATA LOG", "DEGREES OF SEPARATION"],
+    "liveDemo": "#",
+    "sourceCode": "https://github.com/Ak-Space51/graph-based-socialnet-simulator"
+  },
+  {
+    "id": "MISSION_09",
+    "codename": "LEVELDB ENHANCED",
+    "type": "STORAGE ENGINE",
+    "status": "COMPLETE",
+    "year": "2026",
+    "description": "A custom enhancement of the LevelDB storage engine, implementing new APIs including a sequential Range Scan, a contiguous DeleteRange function, and a manual ForceFullCompaction utility with I/O observability.",
+    "techStack": [
+      "C++", 
+      "LevelDB", 
+      "LSM-Tree"
+    ],
+    "features": [
+      "Sequential Range Scan API ",
+      "Contiguous DeleteRange execution ",
+      "ForceFullCompaction manual trigger ",
+      "I/O cost and file churn observability ",
+      "LSM-Tree multi-way merge sort"
+    ],
+    "screenshots": [
+      "LSM-TREE COMPACTION", 
+      "WRITE PATH TRACE", 
+      "COMPACTION STATS"
+    ],
+    "liveDemo": "#",
+    "sourceCode": "https://github.com/Ak-Space51/Enhanced-LevelDB"
+  },
+  {
+    "id": "MISSION_10",
+    "codename": "ML GALAXY CLASSIFIER",
+    "type": "MACHINE LEARNING MODEL",
+    "status": "DEPLOYING",
+    "year": "2026",
+    "description": "A Convolutional Neural Network built to classify galaxy morphologies, utilizing the Galaxy Zoo 2 dataset and GPU-accelerated tensor pipelines.",
+    "techStack": [
+      "Python",
+      "PyTorch",
+      "NumPy",
+      "Google Colab"
+    ],
+    "features": [
+      "Convolutional Neural Network (CNN) architecture",
+      "Galaxy morphology classification",
+      "Galaxy Zoo 2 dataset integration",
+      "GPU-accelerated training loop",
+      "Tensor-based data processing pipeline"
+    ],
+    "screenshots": [
+      "TENSOR PIPELINE",
+      "CNN ARCHITECTURE",
+      "GALAXY CLASSIFICATION"
+    ],
+    "liveDemo": "#",
+    "sourceCode": "https://github.com/Ak-Space51/ml-astronomy"
   },
 ];

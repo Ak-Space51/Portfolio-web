@@ -2,39 +2,39 @@ import { Attribute, MissionStat, Profile, TechStatus } from "@/lib/types";
 
 export const profile: Profile = {
   callsign: "AK SPACE",
-  name: "AAKARSH",
-  role: "SOFTWARE ENGINEER",
+  name: "AK",
+  role: "B.tech CSE",
   location: "EARTH // REMOTE-READY",
   availability: "AVAILABLE",
   summary:
-    "Full-stack engineer specializing in interactive systems, real-time interfaces and applied AI. I build fast, resilient products and the tooling around them — from low-level performance work to polished, game-grade front ends.",
+    "3rd year CSE student at IIT DELHI. Full-stack engineer specializing in interactive systems, real-time interfaces and applied AI. I build fast, resilient products and the tooling around them — from low-level performance work to polished",
   avatar: "", // empty -> procedural holo-portrait; drop a /assets path to override
   socials: [
-    { label: "GITHUB", href: "https://github.com" },
-    { label: "LINKEDIN", href: "https://linkedin.com" },
-    { label: "X", href: "https://x.com" },
-    { label: "MAIL", href: "mailto:operative@akspace.dev" },
+    { label: "GITHUB", href: "https://github.com/Ak-Space51" },
+    { label: "LINKEDIN", href: "https://www.linkedin.com/in/aakarsh-antriksh-125b13354/" },
+    { label: "INSTAGRAM", href: "https://www.instagram.com/aak_space/" },
+    { label: "MAIL", href: "mailto:aak.antriksh@gmail.com" },
   ],
 };
 
 export const attributes: Attribute[] = [
-  { label: "PROBLEM SOLVING", value: 94 },
+  { label: "PROBLEM SOLVING", value: 92 },
   { label: "SYSTEM DESIGN", value: 88 },
   { label: "DEVELOPMENT", value: 92 },
-  { label: "CREATIVITY", value: 86 },
-  { label: "COMMUNICATION", value: 81 },
+  { label: "CREATIVITY", value: 95 },
+  { label: "COMMUNICATION", value: 80 },
 ];
 
 export const missionStats: MissionStat[] = [
-  { label: "MISSIONS DEPLOYED", value: 27 },
-  { label: "YEARS ACTIVE", value: 5, suffix: "+" },
+  { label: "MISSIONS DEPLOYED", value: 6 },
+  { label: "YEARS ACTIVE/IN TRAINING", value: 2, suffix: "+" },
   { label: "TECHNOLOGIES", value: 40, suffix: "+" },
   { label: "COMMENDATIONS", value: 12 },
 ];
 
 export const techStatus: TechStatus[] = [
   { label: "SYSTEMS", value: 98, state: "ONLINE" },
-  { label: "NETWORK", value: 91, state: "STABLE" },
-  { label: "DATABASE", value: 87, state: "SYNCED" },
+  { label: "NETWORK", value: 90, state: "STABLE" },
+  { label: "DATABASE", value: 85, state: "SYNCED" },
   { label: "AI MODULES", value: 76, state: "ACTIVE" },
 ];
