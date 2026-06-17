@@ -90,12 +90,16 @@ export function MissionDossier({ mission }: { mission: Mission }) {
         </div>
           {mission.screenshots.length > 1 && (
             <div className="grid grid-cols-2 gap-3">
-              {mission.screenshots.slice(1, 3).map((s) => (
+              {mission.screenshots.slice(1, 3).map((s, index) => (
                 <div
                   key={s}
                   className="clip-notch-sm relative aspect-video overflow-hidden border border-line/60"
                 >
-                  <HoloImage caption={s} label="FEED" />
+                  <HoloImage 
+                    src={s} 
+                    caption={`SUB_PANEL_0${index + 1}`} 
+                    label="FEED" 
+                  />
                 </div>
               ))}
             </div>
