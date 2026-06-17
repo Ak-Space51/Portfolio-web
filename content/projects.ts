@@ -37,7 +37,7 @@ export const missions: Mission[] = [
       "Columnar memory backend"
     ],
     "screenshots": ["DAG PLANNER // EXECUTION", "OPTIMIZER TRACE", "MEMORY ALLOCATION"],
-    "liveDemo": "#",
+    "liveDemo": "https://portfolio-console-sigma.vercel.app/",
     "sourceCode": "https://github.com/Ak-Space51/cpp-lazy-eager-optimized-dataframe"
   },
   {
