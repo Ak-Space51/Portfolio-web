@@ -82,9 +82,12 @@ export function MissionDossier({ mission }: { mission: Mission }) {
 
         {/* visuals */}
         <div className="space-y-3">
-          <div className="clip-notch-sm relative aspect-video w-full overflow-hidden border border-line/60">
-            <HoloImage caption={mission.screenshots[0] ?? mission.codename} />
-          </div>
+        <div className="clip-notch-sm relative aspect-video w-full overflow-hidden border border-line/60">
+          <HoloImage 
+            src={mission.screenshots[0]} 
+            caption={`${mission.codename} // MAIN_VIEW`} 
+          />
+        </div>
           {mission.screenshots.length > 1 && (
             <div className="grid grid-cols-2 gap-3">
               {mission.screenshots.slice(1, 3).map((s) => (
