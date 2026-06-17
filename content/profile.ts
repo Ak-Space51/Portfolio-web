@@ -2,13 +2,13 @@ import { Attribute, MissionStat, Profile, TechStatus } from "@/lib/types";
 
 export const profile: Profile = {
   callsign: "AK SPACE",
-  name: "AK",
+  name: "AK SPACE",
   role: "B.tech CSE",
   location: "EARTH // REMOTE-READY",
   availability: "AVAILABLE",
   summary:
     "3rd year CSE student at IIT DELHI. Full-stack engineer specializing in interactive systems, real-time interfaces and applied AI. I build fast, resilient products and the tooling around them — from low-level performance work to polished",
-  avatar: "", // empty -> procedural holo-portrait; drop a /assets path to override
+  avatar: "/assets/profile.png", // empty -> procedural holo-portrait; drop a /assets path to override
   socials: [
     { label: "GITHUB", href: "https://github.com/Ak-Space51" },
     { label: "LINKEDIN", href: "https://www.linkedin.com/in/aakarsh-antriksh-125b13354/" },
@@ -26,10 +26,10 @@ export const attributes: Attribute[] = [
 ];
 
 export const missionStats: MissionStat[] = [
-  { label: "MISSIONS DEPLOYED", value: 6 },
+  { label: "MISSIONS DEPLOYED", value: 10},
   { label: "YEARS ACTIVE/IN TRAINING", value: 2, suffix: "+" },
-  { label: "TECHNOLOGIES", value: 40, suffix: "+" },
-  { label: "COMMENDATIONS", value: 12 },
+  { label: "TECHNOLOGIES", value: 30, suffix: "+" },
+  { label: "COMMENDATIONS", value: 6 },
 ];
 
 export const techStatus: TechStatus[] = [
