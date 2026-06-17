@@ -17,8 +17,8 @@ export const missions: Mission[] = [
       "Responsive design",
       "High performance",
     ],
-    screenshots: ["DASHBOARD // PROFILE", "MISSION DOSSIER", "TRANSMISSION"],
-    liveDemo: "#",
+    screenshots: ["assets/landing.png", "assets/landing2.png", "assets/page.png"],
+    liveDemo: "https://portfolio-console-sigma.vercel.app/",
     sourceCode: "https://github.com/Ak-Space51/Portfolio-web",
   },
   {
@@ -37,7 +37,7 @@ export const missions: Mission[] = [
       "Columnar memory backend"
     ],
     "screenshots": ["DAG PLANNER // EXECUTION", "OPTIMIZER TRACE", "MEMORY ALLOCATION"],
-    "liveDemo": "https://portfolio-console-sigma.vercel.app/",
+    "liveDemo": "#",
     "sourceCode": "https://github.com/Ak-Space51/cpp-lazy-eager-optimized-dataframe"
   },
   {
