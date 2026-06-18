@@ -17,8 +17,26 @@ export function Landing({
 }) {
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
+      {/* Back layer: Effects */}
       <CodeRain className="z-[1]" opacity={0.16} />
       <EdgeTicker side="right" />
+
+      {/* Middle layer: Artwork */}
+      {/* Added pointer-events-none so it doesn't block interactions */}
+      <div className="pointer-events-none absolute inset-0 z-[5]">
+        {/* Shows only in light mode */}
+        <img
+          src="assets/light_art.PNG"
+          alt="Landing Art"
+          className="h-full w-full object-cover opacity-100 dark:hidden"
+        />
+        {/* Shows only in dark mode */}
+        <img
+          src="assets/dark_art.PNG"
+          alt="Landing Art"
+          className="hidden h-full w-full object-cover opacity-100 dark:block"
+        />
+      </div>
 
       {/* top status bar */}
       <div className="absolute inset-x-0 top-0 z-20 flex items-center justify-between px-4 py-3 sm:px-8">
@@ -28,7 +46,7 @@ export function Landing({
         <ThemeSwitcher />
       </div>
 
-      {/* main menu */}
+      {/* main menu (Front layer: z-10) */}
       <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-5 sm:pl-24 sm:pr-10 lg:pl-40">
         <motion.div
           initial={{ opacity: 0, x: -24 }}
@@ -42,7 +60,7 @@ export function Landing({
             className="pointer-events-none absolute -top-3 bottom-0 left-0 right-0 border border-accent/45"
           />
 
-          {/* full-height red-glass HUD panel (matches Desktop-1 reference) */}
+          {/* full-height red-glass HUD panel */}
           <div
             className="relative h-full border-[3px] border-accent shadow-glow"
             style={{
@@ -64,7 +82,7 @@ export function Landing({
             <span className="pointer-events-none absolute -bottom-[3px] -left-[3px] h-6 w-6 border-b-2 border-l-2 border-accent-active" />
             <span className="pointer-events-none absolute -bottom-[3px] -right-[3px] h-6 w-6 border-b-2 border-r-2 border-accent-active" />
 
-            {/* menu sits below the overlapping title; system-ready pinned to the bottom */}
+            {/* menu sits below the overlapping title */}
             <div className="relative flex h-full flex-col px-4 pb-6 pt-56">
               <div className="flex min-h-0 flex-1 flex-col">
                 <LandingMenu onEnter={onEnter} onNavigate={onNavigate} />
@@ -79,7 +97,7 @@ export function Landing({
             </div>
           </div>
 
-          {/* title — centered over the panel; the big title overflows past BOTH side edges */}
+          {/* title */}
           <div className="absolute left-1/2 top-6 z-[3] w-max -translate-x-1/2">
             <h1
               className="whitespace-nowrap text-center font-title text-7xl font-bold uppercase leading-none tracking-[0.1em] text-accent sm:text-[8rem]"
@@ -96,8 +114,10 @@ export function Landing({
               </span>
               <span className="h-px w-36 bg-accent-active/40" />
             </div>
-            <p className="mt-2 pl-1 font-mono text-[0.65rem] uppercase tracking-[0.32em] text-muted"
-               style={{ color: "rgb(var(--ok) / 0.8)" }}>
+            <p
+              className="mt-2 pl-1 font-mono text-[0.65rem] uppercase tracking-[0.32em] text-muted"
+              style={{ color: "rgb(var(--ok) / 0.8)" }}
+            >
               {profile.role}
             </p>
           </div>
