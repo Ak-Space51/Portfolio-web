@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Send, Loader2, CheckCircle2 } from "lucide-react";
+import { Send, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
 import { profile } from "@/content/profile";
 import { HudSection } from "@/components/hud/HudSection";
 import { TerminalWindow } from "@/components/hud/TerminalWindow";
@@ -10,16 +10,21 @@ import { HudInput } from "@/components/hud/HudInput";
 import { HudButton } from "@/components/hud/HudButton";
 import { NotchedFrame } from "@/components/hud/NotchedFrame";
 
-type Phase = "idle" | "encrypting" | "transmitting" | "delivered";
+type Phase =
+  | "idle"
+  | "encrypting"
+  | "transmitting"
+  | "delivered"
+  | "failed";
 
-const SEQUENCE: { phase: Phase; label: string; ms: number }[] = [
-  { phase: "encrypting", label: "ENCRYPTING…", ms: 1100 },
-  { phase: "transmitting", label: "TRANSMITTING…", ms: 1100 },
-  { phase: "delivered", label: "DELIVERED", ms: 0 },
-];
+const ENCRYPT_MS = 1100;
+const MIN_ANIMATION_MS = 2200;
+
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export function Contact() {
   const [phase, setPhase] = useState<Phase>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
   const [form, setForm] = useState({
     identifier: "",
     message: "",
@@ -28,24 +33,56 @@ export function Contact() {
 
   const sending = phase === "encrypting" || phase === "transmitting";
 
-  const runSequence = () => {
-    let acc = 0;
-    SEQUENCE.forEach((step) => {
-      setTimeout(() => setPhase(step.phase), acc);
-      acc += step.ms;
-    });
-  };
-
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (sending) return;
-    runSequence();
-    // NOTE: wire a real handler here (fetch to an API route / form service).
+
+    setPhase("encrypting");
+    setErrorMessage("");
+
+    const transmittingTimer = setTimeout(() => {
+      setPhase((current) =>
+        current === "encrypting" ? "transmitting" : current,
+      );
+    }, ENCRYPT_MS);
+
+    try {
+      const [res] = await Promise.all([
+        fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        }),
+        sleep(MIN_ANIMATION_MS),
+      ]);
+
+      clearTimeout(transmittingTimer);
+
+      const data = (await res.json().catch(() => ({}))) as { error?: string };
+
+      if (!res.ok) {
+        setErrorMessage(data.error ?? "Transmission failed.");
+        setPhase("failed");
+        return;
+      }
+
+      setPhase("delivered");
+    } catch {
+      clearTimeout(transmittingTimer);
+      setErrorMessage("Network error. Check your connection and retry.");
+      setPhase("failed");
+    }
   };
 
   const reset = () => {
     setPhase("idle");
+    setErrorMessage("");
     setForm({ identifier: "", message: "", priority: "STANDARD" });
+  };
+
+  const retry = () => {
+    setPhase("idle");
+    setErrorMessage("");
   };
 
   return (
@@ -78,6 +115,25 @@ export function Contact() {
                     NEW TRANSMISSION
                   </HudButton>
                 </motion.div>
+              ) : phase === "failed" ? (
+                <motion.div
+                  key="failed"
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="flex flex-col items-center justify-center gap-3 py-10 text-center"
+                >
+                  <AlertCircle className="h-12 w-12 text-warn" />
+                  <p className="font-display text-xl font-bold tracking-wide text-warn">
+                    TRANSMISSION FAILED
+                  </p>
+                  <p className="max-w-sm text-sm text-muted">
+                    {errorMessage ||
+                      "The uplink could not be established. Retry when the channel clears."}
+                  </p>
+                  <HudButton variant="outline" onClick={retry} className="mt-2">
+                    RETRY TRANSMISSION
+                  </HudButton>
+                </motion.div>
               ) : (
                 <motion.form
                   key="form"
@@ -89,6 +145,7 @@ export function Contact() {
                 >
                   <HudInput
                     label="IDENTIFIER"
+                    type="email"
                     placeholder="callsign / email"
                     required
                     value={form.identifier}

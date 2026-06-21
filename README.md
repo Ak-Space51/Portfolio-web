@@ -52,10 +52,6 @@ Drop your font file in `public/fonts/` — see `public/fonts/README.txt` for exa
 All colors are CSS variables in `app/globals.css` under `[data-theme="dark"]` /
 `[data-theme="light"]`. Tweak `--accent` (resting) and `--accent-active` (selected/hover).
 
-### Contact form
-`components/sections/Contact.tsx` simulates the send. Wire a real handler where the
-`// NOTE: wire a real handler here` comment is (e.g. a Next.js Route Handler or a form service).
-
 ## Stack
 
-Next.js · TypeScript · Tailwind CSS · Framer Motion · lucide-react
+Next.js · TypeScript · Tailwind CSS · Framer Motion · lucide-react · Resend
