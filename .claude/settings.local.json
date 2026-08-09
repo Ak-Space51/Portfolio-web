@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(npx --yes create-next-app@latest . --ts --tailwind --app --eslint --no-src-dir --import-alias \"@/*\" --use-npm --no-turbopack --yes)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(curl -s http://localhost:3000/ -o /tmp/page.html)",
+      "Read(//tmp/**)",
+      "Bash(grep -o \"\\\\$?\" /tmp/page.html)",
+      "mcp__Claude_Preview__preview_start"
+    ]
+  }
+}
