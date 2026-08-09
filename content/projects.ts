@@ -208,4 +208,61 @@ export const missions: Mission[] = [
     "liveDemo": "#",
     "sourceCode": "https://github.com/Ak-Space51/ml-astronomy"
   },
+  {
+    "id": "MISSION_11",
+    "codename": "INTERNSHIP TRACKER",
+    "type": "DATA PLATFORM",
+    "status": "DEPLOYING",
+    "year": "2026",
+    "description": "An internship aggregation platform targeting the nearest upcoming season across India, Singapore, the UK and Hong Kong, ingesting live ATS job boards into a single searchable source of truth.",
+    "techStack": [
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL",
+      "Python",
+      "Tailwind CSS"
+    ],
+    "features": [
+      "Ingestion across 61 verified Greenhouse, Ashby, Lever and Workday boards",
+      "Season-aware classification with off-cycle as a first-class season",
+      "LLM fallback classification for unlabelled postings",
+      "Stipend extraction with per-region market estimates",
+      "Scheduled email alert digests with per-subscriber filters"
+    ],
+    "screenshots": [
+      "INGESTION PIPELINE",
+      "SEASON FILTER MATRIX",
+      "ALERT DISPATCH LOG"
+    ],
+    "liveDemo": "https://internship-tracker-psi-five.vercel.app",
+    "sourceCode": "https://github.com/Ak-Space51/Internship-Tracker"
+  },
+  {
+    "id": "MISSION_12",
+    "codename": "CODE SCOUT AGENT",
+    "type": "AI AGENT FRAMEWORK",
+    "status": "COMPLETE",
+    "year": "2026",
+    "description": "A coding agent built entirely from primitives — hand-written tool dispatchers, agent loops, memory systems and a sandboxed execution environment, with no orchestration frameworks.",
+    "techStack": [
+      "Python",
+      "OpenAI SDK",
+      "MCP",
+      "Textual"
+    ],
+    "features": [
+      "Manual tool calling and multi-turn agent loop",
+      "Persistent resumable sessions with long-term memory",
+      "File read, edit and write toolset with paging",
+      "Sandboxed command execution behind an approval gate",
+      "Extensible via Skills and authenticated MCP servers"
+    ],
+    "screenshots": [
+      "AGENT LOOP TRACE",
+      "TOOL DISPATCH LOG",
+      "MEMORY STORE"
+    ],
+    "liveDemo": "#",
+    "sourceCode": "https://github.com/Ak-Space51/agentic-loop-toolkit"
+  },
 ];
